@@ -29,6 +29,10 @@ before_install:
   - wget https://github.com/bazelbuild/bazel/releases/download/0.1.4/bazel-0.1.4-installer-linux-x86_64.sh
   - chmod +x bazel-0.1.4-installer-linux-x86_64.sh
   - ./bazel-0.1.4-installer-linux-x86_64.sh --user
+  - gcc --version
+  - g++ --version
+  - gcc-5 --version
+  - g++-5 --version
 
 script:
-  - bazel --bazelrc .bazelrc build //tensorflow/tools/pip_package:build_pip_package
+  - echo 1 #bazel --bazelrc .bazelrc build //tensorflow/tools/pip_package:build_pip_package
