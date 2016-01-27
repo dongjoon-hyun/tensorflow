@@ -1,0 +1,34 @@
+sudo: false
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-5
+      - g++-5
+
+notifications:
+  email: false
+
+git:
+  submodules: true
+  depth: 150
+
+language:
+  - java
+  - cpp
+
+jdk:
+  - oraclejdk8
+
+env:
+  - CC=gcc-5 CXX=g++-5
+
+before_install:
+  - wget https://github.com/bazelbuild/bazel/releases/download/0.1.4/bazel-0.1.4-installer-linux-x86_64.sh
+  - chmod +x bazel-0.1.4-installer-linux-x86_64.sh
+  - ./bazel-0.1.4-installer-linux-x86_64.sh --user
+
+script:
+  - bazel --bazelrc .bazelrc build //tensorflow/tools/pip_package:build_pip_package

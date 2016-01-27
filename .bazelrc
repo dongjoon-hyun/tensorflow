@@ -1,0 +1,6 @@
+startup --host_jvm_args=-Xmx1024m
+startup --host_jvm_args=-Xms1024m
+startup --batch
+
+build --spawn_strategy=standalone --genrule_strategy=standalone --ram_utilization_factor=50 --jobs 1 --local_resources 512,1.0,1.0
+test --test_strategy=standalone --ram_utilization_factor=50 --jobs 1 --local_resources 512,1.0,1.0
